@@ -8,7 +8,7 @@ Codeforces, LeetCode, CSES, CodeChef &amp; GeeksforGeeks solutions, organized cl
 
 Synced automatically by SolveBase.
 
-**Total solved: 4**
+**Total solved: 5**
 
 ## Codeforces
 
@@ -36,11 +36,12 @@ Solutions organized by primary topic folder.
 
 Solutions from the CSES Problem Set, organized by section.
 
-**Solved: 4**
+**Solved: 5**
 
 | Section | Solved |
 | --- | --- |
 | [introductory-problems](./cses/introductory-problems) | 4 |
+| [sliding-window-problems](./cses/sliding-window-problems) | 1 |
 
 
 ## CodeChef
@@ -65,5 +66,5 @@ Solutions organized by difficulty level.
 | — | 0 |
 
 
-_Last updated: 2026-11-06_
+_Last updated: 2026-11-07_
 <!-- /cf-sync -->
