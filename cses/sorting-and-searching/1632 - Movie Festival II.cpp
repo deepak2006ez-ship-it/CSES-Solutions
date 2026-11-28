@@ -1,55 +1,46 @@
 #include<iostream>
-#include<vector>
 #include<algorithm>
 #include<set>
+#include<vector>
 using namespace std;
-int main(){
-    int noOfMovie,noOfViewer;
-    cin>>noOfMovie>>noOfViewer;
-    vector<pair<int,int>>vec(noOfMovie);
-    for(int i=0;i<noOfMovie;i++){
-        int start,end;
-        cin>>start>>end;
-        vec[i]={start,end};
+
+int main() {
+    int noOfMovie, noOfViewer;
+    cin >> noOfMovie >> noOfViewer;
+
+    vector<pair<int,int>> vec(noOfMovie);
+
+    for(int i = 0; i < noOfMovie; i++) {
+        int startT, endT;
+        cin >> startT >> endT;
+        vec[i] = {endT, startT};
     }
-    sort(vec.begin(),vec.end());
-    
-    multiset<int>s;
-    int currViewer=1;
-    int totalMovie=1;
-    s.insert(vec[0].second);
-    for(int i=1;i<noOfMovie;i++){
-        int movieStart=vec[i].first;
-        auto it=s.upper_bound(movieStart);
-        if (it != s.begin()) {
-            --it;
-        }
-        if(*it<=movieStart){
-            totalMovie++;
-            s.erase(it);
-            s.insert(vec[i].second);
 
-        }else{
-            if(currViewer<noOfViewer){
-                s.insert(vec[i].second);
-                currViewer++;
-                 totalMovie++;
+    sort(vec.begin(), vec.end());
 
+    multiset<int> s;
 
-            }else{
-                auto it = prev(s.end());
-                if(*it>vec[i].second){
-
-                    s.erase(it);
-                    s.insert(vec[i].second);
-                }
-
-            }
-
-
-        }
-        
+    for(int i = 0; i < noOfViewer; i++) {
+        s.insert(0);
     }
-    cout<<totalMovie<<endl;
+
+    int ans = 0;
+
+    for(auto [endT, startT] : vec) {
+        auto it = s.upper_bound(startT);
+
+        if(it == s.begin()) {
+            continue;
+        }
+
+        --it;
+
+        ans++;
+        s.erase(it);
+        s.insert(endT);
+    }
+
+    cout << ans << '\n';
+
     return 0;
 }
